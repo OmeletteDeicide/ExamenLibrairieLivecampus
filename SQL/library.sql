@@ -16,38 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `emprunts`
---
-
-DROP TABLE IF EXISTS `emprunts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `emprunts` (
-  `id_emprunt` int NOT NULL AUTO_INCREMENT,
-  `id_utilisateur` int NOT NULL,
-  `id_livre` int NOT NULL,
-  `date_emprunt` date NOT NULL,
-  `date_retour_prevue` date NOT NULL,
-  `date_retour_effective` date DEFAULT NULL,
-  PRIMARY KEY (`id_emprunt`),
-  KEY `id_utilisateur` (`id_utilisateur`),
-  KEY `id_livre` (`id_livre`),
-  CONSTRAINT `emprunts_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id`),
-  CONSTRAINT `emprunts_ibfk_2` FOREIGN KEY (`id_livre`) REFERENCES `livres` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `emprunts`
---
-
-LOCK TABLES `emprunts` WRITE;
-/*!40000 ALTER TABLE `emprunts` DISABLE KEYS */;
-INSERT INTO `emprunts` VALUES (1,2,4,'2025-01-09','2025-02-08','2025-01-09'),(2,2,4,'2025-01-09','2025-02-08','2025-01-09'),(3,2,4,'2025-01-09','2025-01-08','2025-01-09'),(4,2,4,'2025-01-09','2025-01-08',NULL);
-/*!40000 ALTER TABLE `emprunts` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `livres`
 --
 
@@ -106,6 +74,39 @@ INSERT INTO `utilisateurs` VALUES (1,'Smith','John','john@smith.com','$2y$10$xSE
 /*!40000 ALTER TABLE `utilisateurs` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+
+--
+-- Table structure for table `emprunts`
+--
+
+DROP TABLE IF EXISTS `emprunts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `emprunts` (
+  `id_emprunt` int NOT NULL AUTO_INCREMENT,
+  `id_utilisateur` int NOT NULL,
+  `id_livre` int NOT NULL,
+  `date_emprunt` date NOT NULL,
+  `date_retour_prevue` date NOT NULL,
+  `date_retour_effective` date DEFAULT NULL,
+  PRIMARY KEY (`id_emprunt`),
+  KEY `id_utilisateur` (`id_utilisateur`),
+  KEY `id_livre` (`id_livre`),
+  CONSTRAINT `emprunts_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id`),
+  CONSTRAINT `emprunts_ibfk_2` FOREIGN KEY (`id_livre`) REFERENCES `livres` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `emprunts`
+--
+
+LOCK TABLES `emprunts` WRITE;
+/*!40000 ALTER TABLE `emprunts` DISABLE KEYS */;
+INSERT INTO `emprunts` VALUES (1,2,4,'2025-01-09','2025-02-08','2025-01-09'),(2,2,4,'2025-01-09','2025-02-08','2025-01-09'),(3,2,4,'2025-01-09','2025-01-08','2025-01-09'),(4,2,4,'2025-01-09','2025-01-08',NULL);
+/*!40000 ALTER TABLE `emprunts` ENABLE KEYS */;
+UNLOCK TABLES;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
