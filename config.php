@@ -7,7 +7,7 @@ if (session_status() == PHP_SESSION_NONE) {
 $host = 'localhost';
 $dbname = 'library';
 $username = 'root';
-$password = 'mysql';
+$password = 'root';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
